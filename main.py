@@ -16,9 +16,13 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
+            
+        player.update(dt)
         screen.fill((0, 0, 0))
         player.draw(screen)
+        
         pygame.display.flip()
+        #limit the framerate to 60 fps
         dt = clock.tick(60) / 1000 #pause loop for 1/60th of a second and assign the elapsed time since last call and convert from sec to ms
 
 
