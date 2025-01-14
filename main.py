@@ -31,10 +31,17 @@ def main():
         for member in updatable:
             member.update(dt)
 
-        for member in asteroids:
-            if member.check_collisions(player):
+        for asteroid in asteroids:
+            if asteroid.check_collisions(player):
                 print("Game over!")
                 sys.exit()
+
+        for asteroid in asteroids:
+            for shot in player_shots:
+                if asteroid.check_collisions(shot):
+                    asteroid.split()
+                    shot.kill()
+
         
         screen.fill((0, 0, 0))
         
